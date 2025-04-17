@@ -1,10 +1,11 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import HeroBadge from "@/components/HeroBadge";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronDown } from "lucide-react";
 
 interface ProjectDetailProps {
@@ -18,6 +19,7 @@ interface ProjectDetailProps {
   achievements?: {
     title: string;
     description: string;
+    metricImage?: string;
   }[];
   tools?: string[];
   duration?: string;
@@ -35,6 +37,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
   tools = [],
   duration,
 }) => {
+  const [openAchievementIndex, setOpenAchievementIndex] = useState<number | null>(null);
+
+  const toggleAchievement = (index: number) => {
+    setOpenAchievementIndex(openAchievementIndex === index ? null : index);
+  };
+
   return (
     <Layout>
       <div className="max-w-7xl mx-auto px-6 py-12">
@@ -77,15 +85,61 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   <h3 className="text-lg font-medium mb-2">Key Achievements</h3>
                   <div className="space-y-4">
                     {achievements.map((achievement, index) => (
-                      <Collapsible key={index} className="border rounded-lg">
-                        <CollapsibleTrigger className="flex justify-between items-center w-full px-4 py-3 text-left font-medium">
-                          {achievement.title}
-                          <ChevronDown className="h-4 w-4 text-gray-500" />
-                        </CollapsibleTrigger>
-                        <CollapsibleContent className="px-4 pb-4 text-gray-600">
-                          {achievement.description}
-                        </CollapsibleContent>
-                      </Collapsible>
+                      <div key={index}>
+                        {achievement.metricImage ? (
+                          <Dialog>
+                            <Collapsible className="border rounded-lg">
+                              <div className="flex justify-between items-center w-full px-4 py-3">
+                                <CollapsibleTrigger 
+                                  className="flex justify-between items-center w-full text-left font-medium"
+                                  onClick={() => toggleAchievement(index)}
+                                >
+                                  {achievement.title}
+                                  <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform ${openAchievementIndex === index ? 'rotate-180' : ''}`} />
+                                </CollapsibleTrigger>
+                                {achievement.metricImage && (
+                                  <DialogTrigger className="ml-2 bg-gray-100 hover:bg-gray-200 p-1 rounded-md">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-bar-chart">
+                                      <line x1="12" x2="12" y1="20" y2="10"></line>
+                                      <line x1="18" x2="18" y1="20" y2="4"></line>
+                                      <line x1="6" x2="6" y1="20" y2="16"></line>
+                                    </svg>
+                                  </DialogTrigger>
+                                )}
+                              </div>
+                              <CollapsibleContent className="px-4 pb-4 text-gray-600">
+                                {achievement.description}
+                              </CollapsibleContent>
+                            </Collapsible>
+                            
+                            {achievement.metricImage && (
+                              <DialogContent className="w-full max-w-2xl">
+                                <div className="pt-4">
+                                  <h3 className="text-xl font-semibold mb-4">{achievement.title} - Metrics</h3>
+                                  <img 
+                                    src={achievement.metricImage} 
+                                    alt={`${achievement.title} metrics`} 
+                                    className="w-full rounded-md"
+                                  />
+                                </div>
+                              </DialogContent>
+                            )}
+                          </Dialog>
+                        ) : (
+                          <Collapsible className="border rounded-lg">
+                            <CollapsibleTrigger 
+                              className="flex justify-between items-center w-full px-4 py-3 text-left font-medium"
+                              onClick={() => toggleAchievement(index)}
+                            >
+                              {achievement.title}
+                              <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform ${openAchievementIndex === index ? 'rotate-180' : ''}`} />
+                            </CollapsibleTrigger>
+                            <CollapsibleContent className="px-4 pb-4 text-gray-600">
+                              {achievement.description}
+                            </CollapsibleContent>
+                          </Collapsible>
+                        )}
+                      </div>
                     ))}
                   </div>
                 </div>

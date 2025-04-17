@@ -16,19 +16,23 @@ const EllieTalksMoney: React.FC = () => {
       achievements={[
         {
           title: "AI Content Framework",
-          description: "Designed a structured content framework for generating finance-related content using AI tools while maintaining a consistent brand voice and messaging style."
+          description: "Designed a structured content framework for generating finance-related content using AI tools while maintaining a consistent brand voice and messaging style.",
+          metricImage: "https://via.placeholder.com/800x500/09f/fff.png?text=AI+Content+Framework+Metrics"
         },
         {
           title: "Growth Strategy",
-          description: "Developed scalable growth frameworks for expanding social media presence across multiple platforms while preserving anonymity."
+          description: "Developed scalable growth frameworks for expanding social media presence across multiple platforms while preserving anonymity.",
+          metricImage: "https://via.placeholder.com/800x500/09f/fff.png?text=Growth+Strategy+Metrics"
         },
         {
           title: "Audience Research",
-          description: "Conducted extensive research on target financial demographics to create highly relevant and engaging content that resonates with specific audience segments."
+          description: "Conducted extensive research on target financial demographics to create highly relevant and engaging content that resonates with specific audience segments.",
+          metricImage: "https://via.placeholder.com/800x500/09f/fff.png?text=Audience+Research+Metrics"
         },
         {
           title: "Content Calendar",
-          description: "Created comprehensive content calendars with AI-generated finance topics that addressed common questions and pain points in personal finance management."
+          description: "Created comprehensive content calendars with AI-generated finance topics that addressed common questions and pain points in personal finance management.",
+          metricImage: "https://via.placeholder.com/800x500/09f/fff.png?text=Content+Calendar+Metrics"
         }
       ]}
       tools={["ChatGPT", "Midjourney", "Canva", "CapCut", "TikTok", "Instagram", "YouTube", "Content Scheduling Tools"]}
