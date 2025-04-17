@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -35,19 +39,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -96,6 +93,63 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-poppins;
+  }
+}
+
+.bg-purple-gradient {
+  background-color: #9b87f5;
+}
+
+.skill-card {
+  @apply rounded-lg p-6 shadow-md mb-8;
+}
+
+.tool-card {
+  @apply bg-gray-50 p-4 rounded-lg flex items-center justify-center h-24;
+}
+
+.timeline-item {
+  @apply flex items-start gap-8 py-6;
+}
+
+.timeline-year {
+  @apply text-sm text-gray-500;
+}
+
+.timeline-title {
+  @apply font-medium;
+}
+
+.contact-input {
+  @apply w-full p-3 border border-gray-300 rounded-md;
+}
+
+.contact-btn {
+  @apply bg-black text-white py-3 px-6 rounded-md font-medium w-full;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .timeline-item {
+    @apply gap-4;
+  }
+  
+  .timeline-item > div:first-child {
+    @apply w-20;
+  }
+  
+  .timeline-item > div:last-child {
+    @apply w-24;
+  }
+  
+  .tool-card {
+    @apply h-20;
+  }
+}
+
+@media (max-width: 640px) {
+  .tool-card {
+    @apply h-16 p-2;
   }
 }
