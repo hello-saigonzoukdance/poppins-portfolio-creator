@@ -3,6 +3,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
+import HeroBadge from "@/components/HeroBadge";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ChevronDown } from "lucide-react";
 
 interface ProjectDetailProps {
   title: string;
@@ -12,6 +15,12 @@ interface ProjectDetailProps {
   description: string;
   image: string;
   logo?: string;
+  achievements?: {
+    title: string;
+    description: string;
+  }[];
+  tools?: string[];
+  duration?: string;
 }
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({
@@ -21,7 +30,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
   client,
   description,
   image,
-  logo
+  logo,
+  achievements = [],
+  tools = [],
+  duration,
 }) => {
   return (
     <Layout>
@@ -43,6 +55,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 <p>{year}</p>
               </div>
               
+              {duration && (
+                <div>
+                  <h3 className="text-lg font-medium mb-2">Duration</h3>
+                  <p>{duration}</p>
+                </div>
+              )}
+              
               <div>
                 <h3 className="text-lg font-medium mb-2">Client</h3>
                 <p>{client}</p>
@@ -52,6 +71,38 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 <h3 className="text-lg font-medium mb-2">About the Project</h3>
                 <p className="text-gray-600">{description}</p>
               </div>
+              
+              {achievements.length > 0 && (
+                <div>
+                  <h3 className="text-lg font-medium mb-2">Key Achievements</h3>
+                  <div className="space-y-4">
+                    {achievements.map((achievement, index) => (
+                      <Collapsible key={index} className="border rounded-lg">
+                        <CollapsibleTrigger className="flex justify-between items-center w-full px-4 py-3 text-left font-medium">
+                          {achievement.title}
+                          <ChevronDown className="h-4 w-4 text-gray-500" />
+                        </CollapsibleTrigger>
+                        <CollapsibleContent className="px-4 pb-4 text-gray-600">
+                          {achievement.description}
+                        </CollapsibleContent>
+                      </Collapsible>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {tools.length > 0 && (
+                <div>
+                  <h3 className="text-lg font-medium mb-2">Tools Used</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {tools.map((tool, index) => (
+                      <span key={index} className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
               
               <div className="pt-4">
                 <Button className="bg-black text-white rounded-full px-8 py-2 hover:opacity-90 transition-opacity">
@@ -67,11 +118,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 <img src={logo} alt={`${title} logo`} className="h-12" />
               )}
             </div>
-            <img 
-              src={image} 
-              alt={title} 
-              className="w-full rounded-lg shadow-lg"
-            />
+            <div className="relative w-full">
+              <HeroBadge text="FEATURED" position="top-right" color="yellow" />
+              <img 
+                src={image} 
+                alt={title} 
+                className="w-full rounded-lg shadow-lg"
+              />
+            </div>
           </div>
         </div>
         

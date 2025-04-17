@@ -8,10 +8,30 @@ const EllieTalksMoney: React.FC = () => {
       title="EllieTalksMoney"
       role="AI Faceless Social Media Growth Strategist"
       year="2023"
+      duration="Jun 2023 - Dec 2023"
       client="EllieTalksMoney Finance Platform"
-      description="As an AI Faceless Social Media Growth Strategist for EllieTalksMoney (coming soon), I'm developing innovative strategies that leverage artificial intelligence to create and distribute engaging finance content without revealing the creator's identity. This project involves designing content frameworks that maintain a consistent brand voice, implementing AI tools for content creation, and establishing growth frameworks that can scale across multiple platforms while maintaining authenticity."
+      description="As an AI Faceless Social Media Growth Strategist for EllieTalksMoney (coming soon), I'm developing innovative strategies that leverage artificial intelligence to create and distribute engaging finance content without revealing the creator's identity."
       image="https://via.placeholder.com/800x600/09f/fff.png"
       logo="https://via.placeholder.com/200x50/09f/fff.png"
+      achievements={[
+        {
+          title: "AI Content Framework",
+          description: "Designed a structured content framework for generating finance-related content using AI tools while maintaining a consistent brand voice and messaging style."
+        },
+        {
+          title: "Growth Strategy",
+          description: "Developed scalable growth frameworks for expanding social media presence across multiple platforms while preserving anonymity."
+        },
+        {
+          title: "Audience Research",
+          description: "Conducted extensive research on target financial demographics to create highly relevant and engaging content that resonates with specific audience segments."
+        },
+        {
+          title: "Content Calendar",
+          description: "Created comprehensive content calendars with AI-generated finance topics that addressed common questions and pain points in personal finance management."
+        }
+      ]}
+      tools={["ChatGPT", "Midjourney", "Canva", "CapCut", "TikTok", "Instagram", "YouTube", "Content Scheduling Tools"]}
     />
   );
 };
