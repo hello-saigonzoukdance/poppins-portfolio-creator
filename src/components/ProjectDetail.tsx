@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import HeroBadge from "@/components/HeroBadge";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ArrowLeft, ExternalLink } from "lucide-react";
+import { Card } from "@/components/ui/card";
 
 interface ProjectDetailProps {
   title: string;
@@ -47,63 +48,76 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
     <Layout>
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="mb-8">
-          <Link to="/portfolio" className="text-gray-600 hover:text-black transition-colors">
-            &larr; Back to Portfolio
+          <Link to="/portfolio" className="inline-flex items-center text-gray-600 hover:text-black transition-colors">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Portfolio
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-          <div>
-            <h1 className="text-4xl font-bold mb-2">{title}</h1>
-            <p className="text-xl text-gray-600 mb-6">{role}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+                {title}
+              </h1>
+              <p className="text-xl text-gray-600">{role}</p>
+            </div>
             
-            <div className="space-y-6">
+            <div className="grid grid-cols-2 gap-8">
               <div>
-                <h3 className="text-lg font-medium mb-2">Year</h3>
-                <p>{year}</p>
+                <h3 className="text-sm uppercase tracking-wider text-gray-500 mb-1">Year</h3>
+                <p className="font-medium">{year}</p>
               </div>
               
               {duration && (
                 <div>
-                  <h3 className="text-lg font-medium mb-2">Duration</h3>
-                  <p>{duration}</p>
+                  <h3 className="text-sm uppercase tracking-wider text-gray-500 mb-1">Duration</h3>
+                  <p className="font-medium">{duration}</p>
                 </div>
               )}
               
               <div>
-                <h3 className="text-lg font-medium mb-2">Client</h3>
-                <p>{client}</p>
+                <h3 className="text-sm uppercase tracking-wider text-gray-500 mb-1">Client</h3>
+                <p className="font-medium">{client}</p>
               </div>
-              
-              <div>
-                <h3 className="text-lg font-medium mb-2">About the Project</h3>
-                <p className="text-gray-600">{description}</p>
-              </div>
-              
-              {achievements.length > 0 && (
-                <div>
-                  <h3 className="text-lg font-medium mb-2">Key Achievements</h3>
-                  <div className="space-y-4">
-                    {achievements.map((achievement, index) => (
-                      <div key={index}>
-                        {achievement.metricImage ? (
-                          <Dialog>
-                            <Collapsible className="border rounded-lg">
-                              <div className="flex justify-between items-center w-full px-4 py-3">
+            </div>
+            
+            <div>
+              <h3 className="text-sm uppercase tracking-wider text-gray-500 mb-3">About the Project</h3>
+              <p className="text-gray-600 leading-relaxed">{description}</p>
+            </div>
+            
+            {achievements.length > 0 && (
+              <div className="space-y-4">
+                <h3 className="text-sm uppercase tracking-wider text-gray-500 mb-3">Key Achievements</h3>
+                <div className="space-y-3">
+                  {achievements.map((achievement, index) => (
+                    <div key={index}>
+                      {achievement.metricImage ? (
+                        <Dialog>
+                          <Card className="overflow-hidden transition-all hover:shadow-lg">
+                            <Collapsible>
+                              <div className="flex justify-between items-center w-full p-4">
                                 <CollapsibleTrigger 
                                   className="flex justify-between items-center w-full text-left font-medium"
                                   onClick={() => toggleAchievement(index)}
                                 >
                                   {achievement.title}
-                                  <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform ${openAchievementIndex === index ? 'rotate-180' : ''}`} />
+                                  <ChevronDown 
+                                    className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${
+                                      openAchievementIndex === index ? 'rotate-180' : ''
+                                    }`} 
+                                  />
                                 </CollapsibleTrigger>
                                 {achievement.metricImage && (
-                                  <DialogTrigger className="ml-2 bg-gray-100 hover:bg-gray-200 p-1 rounded-md">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-bar-chart">
-                                      <line x1="12" x2="12" y1="20" y2="10"></line>
-                                      <line x1="18" x2="18" y1="20" y2="4"></line>
-                                      <line x1="6" x2="6" y1="20" y2="16"></line>
-                                    </svg>
+                                  <DialogTrigger>
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      className="ml-2 text-gray-500 hover:text-gray-900"
+                                    >
+                                      <ExternalLink className="h-4 w-4" />
+                                    </Button>
                                   </DialogTrigger>
                                 )}
                               </div>
@@ -111,74 +125,86 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                                 {achievement.description}
                               </CollapsibleContent>
                             </Collapsible>
-                            
-                            {achievement.metricImage && (
-                              <DialogContent className="w-full max-w-2xl">
-                                <div className="pt-4">
-                                  <h3 className="text-xl font-semibold mb-4">{achievement.title} - Metrics</h3>
-                                  <img 
-                                    src={achievement.metricImage} 
-                                    alt={`${achievement.title} metrics`} 
-                                    className="w-full rounded-md"
-                                  />
-                                </div>
-                              </DialogContent>
-                            )}
-                          </Dialog>
-                        ) : (
-                          <Collapsible className="border rounded-lg">
+                          </Card>
+                          
+                          {achievement.metricImage && (
+                            <DialogContent className="max-w-3xl">
+                              <div className="pt-4">
+                                <h3 className="text-xl font-semibold mb-4">{achievement.title} - Metrics</h3>
+                                <img 
+                                  src={achievement.metricImage} 
+                                  alt={`${achievement.title} metrics`} 
+                                  className="w-full rounded-lg"
+                                />
+                              </div>
+                            </DialogContent>
+                          )}
+                        </Dialog>
+                      ) : (
+                        <Card className="overflow-hidden transition-all hover:shadow-lg">
+                          <Collapsible>
                             <CollapsibleTrigger 
-                              className="flex justify-between items-center w-full px-4 py-3 text-left font-medium"
+                              className="flex justify-between items-center w-full p-4 text-left font-medium"
                               onClick={() => toggleAchievement(index)}
                             >
                               {achievement.title}
-                              <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform ${openAchievementIndex === index ? 'rotate-180' : ''}`} />
+                              <ChevronDown 
+                                className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${
+                                  openAchievementIndex === index ? 'rotate-180' : ''
+                                }`} 
+                              />
                             </CollapsibleTrigger>
                             <CollapsibleContent className="px-4 pb-4 text-gray-600">
                               {achievement.description}
                             </CollapsibleContent>
                           </Collapsible>
-                        )}
-                      </div>
-                    ))}
-                  </div>
+                        </Card>
+                      )}
+                    </div>
+                  ))}
                 </div>
-              )}
-              
-              {tools.length > 0 && (
-                <div>
-                  <h3 className="text-lg font-medium mb-2">Tools Used</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {tools.map((tool, index) => (
-                      <span key={index} className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              <div className="pt-4">
-                <Button className="bg-black text-white rounded-full px-8 py-2 hover:opacity-90 transition-opacity">
-                  View Project
-                </Button>
               </div>
+            )}
+            
+            {tools.length > 0 && (
+              <div>
+                <h3 className="text-sm uppercase tracking-wider text-gray-500 mb-3">Tools Used</h3>
+                <div className="flex flex-wrap gap-2">
+                  {tools.map((tool, index) => (
+                    <span 
+                      key={index} 
+                      className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            <div className="pt-4">
+              <Button className="bg-black text-white rounded-full px-8 py-2 hover:bg-gray-800 transition-colors">
+                View Project
+              </Button>
             </div>
           </div>
           
-          <div className="flex flex-col items-end">
-            <div className="mb-6">
+          <div className="space-y-8">
+            <div className="sticky top-24">
               {logo && (
-                <img src={logo} alt={`${title} logo`} className="h-12" />
+                <div className="mb-6">
+                  <img src={logo} alt={`${title} logo`} className="h-12" />
+                </div>
               )}
-            </div>
-            <div className="relative w-full">
-              <HeroBadge text="FEATURED" position="top-right" color="yellow" />
-              <img 
-                src={image} 
-                alt={title} 
-                className="w-full rounded-lg shadow-lg"
-              />
+              <div className="relative w-full rounded-xl overflow-hidden shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 mix-blend-overlay" />
+                <HeroBadge text="FEATURED" position="top-right" color="yellow" />
+                <img 
+                  src={image} 
+                  alt={title} 
+                  className="w-full rounded-xl"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -187,8 +213,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
           <h2 className="text-2xl font-bold mb-8">Other Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Link to="/portfolio/reelcut" className="group">
-              <div className="bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 group-hover:shadow-xl">
-                <div className="h-40 overflow-hidden">
+              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl">
+                <div className="h-48 overflow-hidden">
                   <img 
                     src="https://res.cloudinary.com/ngandev/image/upload/v1713393214/portfolios/reelcut_vemgjj.png" 
                     alt="Reelcut"
@@ -196,15 +222,15 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-medium">Reelcut</h3>
+                  <h3 className="font-medium group-hover:text-purple-600 transition-colors">Reelcut</h3>
                   <p className="text-sm text-gray-500">Marketing Project</p>
                 </div>
-              </div>
+              </Card>
             </Link>
             
             <Link to="/portfolio/newbase" className="group">
-              <div className="bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 group-hover:shadow-xl">
-                <div className="h-40 overflow-hidden">
+              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl">
+                <div className="h-48 overflow-hidden">
                   <img 
                     src="https://res.cloudinary.com/ngandev/image/upload/v1713393214/portfolios/newbase_fjgadp.png" 
                     alt="Newbase"
@@ -212,15 +238,15 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-medium">Newbase</h3>
+                  <h3 className="font-medium group-hover:text-purple-600 transition-colors">Newbase</h3>
                   <p className="text-sm text-gray-500">SEO Specialist</p>
                 </div>
-              </div>
+              </Card>
             </Link>
             
             <Link to="/portfolio/blackhatairdrop" className="group">
-              <div className="bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 group-hover:shadow-xl">
-                <div className="h-40 overflow-hidden">
+              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl">
+                <div className="h-48 overflow-hidden">
                   <img 
                     src="https://res.cloudinary.com/ngandev/image/upload/v1713393214/portfolios/blackhat_pj0eir.png" 
                     alt="Blackhat Airdrop"
@@ -228,10 +254,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-medium">Blackhat Airdrop</h3>
+                  <h3 className="font-medium group-hover:text-purple-600 transition-colors">Blackhat Airdrop</h3>
                   <p className="text-sm text-gray-500">Web3 Community</p>
                 </div>
-              </div>
+              </Card>
             </Link>
           </div>
         </div>
@@ -241,3 +267,4 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
 };
 
 export default ProjectDetail;
+
