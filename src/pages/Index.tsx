@@ -43,7 +43,7 @@ const Index: React.FC = () => {
             <h2 className="text-3xl font-bold mb-2">Growth-Oriented</h2>
             <h2 className="text-3xl font-bold mb-8">Digital Marketer</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Proven success in driving organic growth through SEO, social media marketing, and project management. Skilled in data analysis and campaign optimization.
+            Proven success in driving organic growth through SEO, social media marketing, and project management, with a foundational understanding of Web3 technologies.
             </p>
           </div>
 
@@ -51,7 +51,7 @@ const Index: React.FC = () => {
             <div className="skill-card">
               <h3 className="text-xl font-semibold mb-2">Project Management</h3>
               <p className="text-gray-600 mb-6">
-                Managed Creative Project Manager with a focus on marketing campaigns.
+              Results-Oriented Project Manager with a Focus on Growth.
               </p>
               <div className="rounded-lg overflow-hidden bg-gray-100">
                 <Link to="/portfolio/reelcut">
@@ -67,7 +67,7 @@ const Index: React.FC = () => {
             <div className="skill-card">
               <h3 className="text-xl font-semibold mb-2">SEO</h3>
               <p className="text-gray-600 mb-6">
-                SEO Specialist for a Finance Tech Start-up based in Singapore.
+                SEO Specialist with a Proven Track Record of Driving Organic Growth.
               </p>
               <div className="rounded-lg overflow-hidden bg-gray-100">
                 <Link to="/portfolio/newbase">
@@ -83,7 +83,7 @@ const Index: React.FC = () => {
             <div className="skill-card">
               <h3 className="text-xl font-semibold mb-2">Web3</h3>
               <p className="text-gray-600 mb-6">
-                Web3 Strategist with Experience in Airdrops and Giveaways.
+              Web3 Enthusiast with Experience in Airdrop Management and Growth.
               </p>
               <div className="rounded-lg overflow-hidden bg-gray-100">
                 <Link to="/portfolio/blackhatairdrop">
@@ -116,7 +116,7 @@ const Index: React.FC = () => {
               <Link to="/portfolio/reelcut" className="block w-full hover:bg-gray-50">
                 <div className="timeline-item border-t">
                   <div className="w-32">
-                    <p className="timeline-year">2024</p>
+                    <p className="timeline-year">August 2024 - Now </p>
                   </div>
                   <div className="flex-1">
                     <h3 className="timeline-title">Marketing Project Specialist</h3>
@@ -130,7 +130,7 @@ const Index: React.FC = () => {
               <Link to="/portfolio/newbase" className="block w-full hover:bg-gray-50">
                 <div className="timeline-item border-t">
                   <div className="w-32">
-                    <p className="timeline-year">2024</p>
+                    <p className="timeline-year">October 2024 - Now </p>
                   </div>
                   <div className="flex-1">
                     <h3 className="timeline-title">SEO Specialist</h3>
@@ -144,7 +144,7 @@ const Index: React.FC = () => {
               <Link to="/portfolio/blackhatairdrop" className="block w-full hover:bg-gray-50">
                 <div className="timeline-item border-t">
                   <div className="w-32">
-                    <p className="timeline-year">2023</p>
+                    <p className="timeline-year">December 2024 - Now </p>
                   </div>
                   <div className="flex-1">
                     <h3 className="timeline-title">Web3 Community Airdrop</h3>
@@ -158,7 +158,7 @@ const Index: React.FC = () => {
               <Link to="/portfolio/lazymoneycircle" className="block w-full hover:bg-gray-50">
                 <div className="timeline-item border-t">
                   <div className="w-32">
-                    <p className="timeline-year">2023</p>
+                    <p className="timeline-year">October 2024 - Now </p>
                   </div>
                   <div className="flex-1">
                     <h3 className="timeline-title">Faceless Social Media Strategist</h3>
@@ -172,7 +172,7 @@ const Index: React.FC = () => {
               <Link to="/portfolio/namnrpro" className="block w-full hover:bg-gray-50">
                 <div className="timeline-item border-t">
                   <div className="w-32">
-                    <p className="timeline-year">2022</p>
+                    <p className="timeline-year">January 2025 - Now </p>
                   </div>
                   <div className="flex-1">
                     <h3 className="timeline-title">LinkedIn Video Editor</h3>
@@ -186,7 +186,7 @@ const Index: React.FC = () => {
               <Link to="/portfolio/ellietalksmoney" className="block w-full hover:bg-gray-50">
                 <div className="timeline-item border-t border-b">
                   <div className="w-32">
-                    <p className="timeline-year">2023</p>
+                    <p className="timeline-year"> March 2025 - Now</p>
                   </div>
                   <div className="flex-1">
                     <h3 className="timeline-title">AI Faceless Social Media Growth Strategist (coming soon)</h3>
