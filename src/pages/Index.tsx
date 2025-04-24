@@ -150,7 +150,7 @@ const Index: React.FC = () => {
                     <h3 className="timeline-title">Web3 Community Airdrop</h3>
                   </div>
                   <div className="w-32 text-right">
-                    <img src="https://res.cloudinary.com/ngandev/image/upload/v1713393214/portfolios/blackhat_pj0eir.png" alt="Blackhat Airdrop" className="h-8 ml-auto" />
+                  <span className="text-yellow-500 font-bold">Blackhat Airdrop Community</span>
                   </div>
                 </div>
               </Link>
@@ -164,7 +164,7 @@ const Index: React.FC = () => {
                     <h3 className="timeline-title">Faceless Social Media Strategist</h3>
                   </div>
                   <div className="w-32 text-right">
-                    <span className="text-pink-500 font-bold">Lazy</span>
+                    <span className="text-pink-500 font-bold">LazyMoneyCircle</span>
                   </div>
                 </div>
               </Link>
@@ -178,7 +178,7 @@ const Index: React.FC = () => {
                     <h3 className="timeline-title">LinkedIn Video Editor</h3>
                   </div>
                   <div className="w-32 text-right">
-                    <span className="text-teal-500 font-bold">NamNR</span>
+                    <span className="text-teal-500 font-bold">NamNRPro</span>
                   </div>
                 </div>
               </Link>
