@@ -10,6 +10,7 @@ interface ProjectHeaderProps {
   duration?: string;
   client: string;
   description: string;
+  logo?: string;
 }
 
 const ProjectHeader: React.FC<ProjectHeaderProps> = ({
@@ -19,6 +20,7 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({
   duration,
   client,
   description,
+  logo,
 }) => {
   return (
     <div className="space-y-8">
@@ -30,10 +32,21 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({
       </div>
       
       <div className="space-y-4">
-        <h1 className="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
-          {title}
-        </h1>
-        <p className="text-xl text-gray-600">{role}</p>
+        <div className="flex items-center gap-4">
+          {logo && (
+            <img 
+              src={logo} 
+              alt={`${title} logo`} 
+              className="h-12 w-12 object-contain" 
+            />
+          )}
+          <div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+              {title}
+            </h1>
+            <p className="text-xl text-gray-600">{role}</p>
+          </div>
+        </div>
       </div>
       
       <div className="grid grid-cols-2 gap-8">

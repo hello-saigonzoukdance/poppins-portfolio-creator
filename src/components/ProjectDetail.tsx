@@ -52,6 +52,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
             duration={duration}
             client={client}
             description={description}
+            logo={logo}
           />
           
           <div className="space-y-8">
