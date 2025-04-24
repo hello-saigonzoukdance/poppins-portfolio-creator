@@ -8,6 +8,13 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronDown, ArrowLeft, ExternalLink } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface ProjectDetailProps {
   title: string;
@@ -16,6 +23,7 @@ interface ProjectDetailProps {
   client: string;
   description: string;
   image: string;
+  carouselImages?: string[];
   logo?: string;
   achievements?: {
     title: string;
@@ -33,16 +41,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
   client,
   description,
   image,
+  carouselImages = [],
   logo,
   achievements = [],
   tools = [],
   duration,
 }) => {
   const [openAchievementIndex, setOpenAchievementIndex] = useState<number | null>(null);
-
-  const toggleAchievement = (index: number) => {
-    setOpenAchievementIndex(openAchievementIndex === index ? null : index);
-  };
+  const allImages = [image, ...carouselImages];
 
   return (
     <Layout>
@@ -197,13 +203,24 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 </div>
               )}
               <div className="relative w-full rounded-xl overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 mix-blend-overlay" />
-                <HeroBadge text="FEATURED" position="top-right" color="yellow" />
-                <img 
-                  src={image} 
-                  alt={title} 
-                  className="w-full rounded-xl"
-                />
+                <Carousel className="w-full">
+                  <CarouselContent>
+                    {allImages.map((imgSrc, index) => (
+                      <CarouselItem key={index}>
+                        <div className="relative aspect-video w-full overflow-hidden rounded-xl">
+                          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 mix-blend-overlay" />
+                          <img 
+                            src={imgSrc} 
+                            alt={`${title} showcase ${index + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-2" />
+                  <CarouselNext className="right-2" />
+                </Carousel>
               </div>
             </div>
           </div>
@@ -267,4 +284,3 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
 };
 
 export default ProjectDetail;
-

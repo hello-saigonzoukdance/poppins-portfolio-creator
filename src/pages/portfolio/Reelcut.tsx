@@ -12,6 +12,11 @@ const Reelcut: React.FC = () => {
       client="Reelcut.xyz - Video Editing Agency"
       description="As the Marketing Project Specialist at Reelcut, I developed and implemented comprehensive marketing strategies focused on brand growth and user acquisition. I managed cross-functional teams to deliver campaigns on schedule and within budget, while continuously optimizing performance through data-driven insights."
       image="https://res.cloudinary.com/ngandev/image/upload/v1713393214/portfolios/reelcut_vemgjj.png"
+      carouselImages={[
+        "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1600&h=900",
+        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1600&h=900",
+        "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1600&h=900"
+      ]}
       logo="https://res.cloudinary.com/ngandev/image/upload/v1713393214/portfolios/reelcut_vemgjj.png"
       achievements={[
         {
