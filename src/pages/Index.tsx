@@ -15,7 +15,7 @@ const Index: React.FC = () => {
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Hello I'm Ngan!</h1>
             <p className="text-gray-700 mb-8">
-              Digital marketer with 3+ years in the marketing, specializing in Branding & Social. Passionate about social media growth, SEO planning, and creative campaigns. I stay ahead of trends to optimize growth and deliver successful marketing strategies.
+            Results-driven and flexible marketer with 1+ years of experience in B2B, Blockchain, AI, and Web3 industries. Expertise in content strategy, SEO, and marketing automation. Skilled in using data, creativity, and storytelling to scale brands.
             </p>
             <div className="flex gap-4">
               <Button className="bg-black text-white rounded-full px-8 py-2 hover:opacity-90 transition-opacity text-sm">
