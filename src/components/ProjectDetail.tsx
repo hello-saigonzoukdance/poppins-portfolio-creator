@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
@@ -49,6 +48,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
 }) => {
   const [openAchievementIndex, setOpenAchievementIndex] = useState<number | null>(null);
   const allImages = [image, ...carouselImages];
+  
+  const toggleAchievement = (index: number) => {
+    setOpenAchievementIndex(openAchievementIndex === index ? null : index);
+  };
 
   return (
     <Layout>
